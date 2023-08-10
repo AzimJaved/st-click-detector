@@ -38,6 +38,7 @@ function onRender(event: Event): void {
     if (links[i].id !== "") {
       links[i].onclick = function (): void {
         Streamlit.setComponentValue(links[i].id)
+        links[i].classList.add('click_detector_clicked')
       }
     }
   }
