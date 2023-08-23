@@ -33,12 +33,11 @@ function onRender(event: Event): void {
   div.innerHTML = transparentPixel + data.args["html_content"] + transparentPixel
 
   // Add click detection for each hyperlink
-  let links = document.getElementsByTagName("a");
-  for (let i = 0; i < links.length; i++) {
-    if (links[i].id !== "") {
-      links[i].onclick = function (): void {
-        Streamlit.setComponentValue(links[i].id)
-        links[i].classList.add('click_detector_clicked')
+  let elements = document.getElementsByClass("detect-input");
+  for (let i = 0; i < elements.length; i++) {
+    if (elements[i].id !== "") {
+      elements[i].onchange = function (): void {
+        Streamlit.setComponentValue({id: elements[i].id, checked: elements[i].checked})
       }
     }
   }
